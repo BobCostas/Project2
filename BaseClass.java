@@ -1,6 +1,6 @@
 package p2_Package;
 
-public class BaseClass {
+public class BaseClass implements Comparable{
 
     /**
      * Default constructor for BaseClass
@@ -25,11 +25,12 @@ public class BaseClass {
       int currentChar = 0;
 
       base = baseClassToCopy.base;
+      overFlow = baseClassToCopy.overFlow;
       maxDigits = baseClassToCopy.maxDigits;
       numDigits = baseClassToCopy.numDigits;
       digitArray = initializeDigits();
 
-      for( currentChar = 0; currentChar < numDigits; currentChar++) // copy other's array
+      for( currentChar = 0; currentChar < numDigits; currentChar++ ) // copy other's array
       {
          digitArray[ currentChar ] = digitArray[ currentChar ];
       }
@@ -63,7 +64,7 @@ public class BaseClass {
     /**
      * Lowest base value that can be used
      */
-    private static int MIN_BASE_VALUE;
+    private static int MIN_BASE_VALUE = 2;
 
     /**
      * Current number of digits held for this value
@@ -94,10 +95,21 @@ public class BaseClass {
      */
     private int intToPow( int intToRaise, int power )
     {
-        if( power == 0)
+        if( power == 0 )
         {
             return 1;
         }
-        return intToRaise * intToPow( intToRaise, power - 1);
+        return intToRaise * intToPow( intToRaise, power - 1 );
+    }
+
+    /**
+     * Implements the compareTo required of the Comparable class
+     * @param value BaseClass data to be compared with this
+     * @return value specifying result: for this greater than value: +1, for equal: 0,
+     *         for this less than value: -1
+     */
+    public int compareTo( BaseClass value )
+    {
+
     }
 }
