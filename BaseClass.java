@@ -12,8 +12,7 @@ public class BaseClass {
     {
         base = baseSet;
         maxDigits = maxDigitSet;
-        digitArray = new char[ maxDigits ];
-        initializeDigits();
+        digitArray = initializeDigits();
         numDigits = 0;
     }
 
@@ -28,8 +27,7 @@ public class BaseClass {
       base = baseClassToCopy.base;
       maxDigits = baseClassToCopy.maxDigits;
       numDigits = baseClassToCopy.numDigits;
-      digitArray = new char[ maxDigits ];
-      initializeDigits();
+      digitArray = initializeDigits();
 
       for( currentChar = 0; currentChar < numDigits; currentChar++) // copy other's array
       {
@@ -76,4 +74,15 @@ public class BaseClass {
      * Flag set if register is overflowed by any operation
      */
     protected boolean overFlow;
+
+
+    /**
+     * Creates new digit array and zeroes out the array
+     * @return new integer array created, and initialized with all zeroes
+     */
+    public char[] initializeDigits()
+    {
+       char[] returnArray = new char[ maxDigits ];
+       return digitArray;
+    }
 }
