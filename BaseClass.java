@@ -85,4 +85,19 @@ public class BaseClass {
        char[] returnArray = new char[ maxDigits ];
        return digitArray;
     }
+
+    /**
+     * Raises an integer to a power
+     * @param intToRaise The integer to raise to power
+     * @param power The power we are raising the integer to
+     * @return intToRaise ^ power
+     */
+    private int intToPow( int intToRaise, int power )
+    {
+        if( power == 0)
+        {
+            return 1;
+        }
+        return intToRaise * intToPow( intToRaise, power - 1);
+    }
 }
