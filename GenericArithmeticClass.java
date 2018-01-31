@@ -1,0 +1,4 @@
+package p2_Package;
+
+public class GenericArithmeticClass {
+}
