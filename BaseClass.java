@@ -1,5 +1,7 @@
 package p2_Package;
 
+import java.util.Arrays;
+
 public class BaseClass {
 
     /**
@@ -14,6 +16,7 @@ public class BaseClass {
         maxDigits = maxDigitSet;
         digitArray = initializeDigits();
         numDigits = 0;
+        digitArray = decToBase( decValSet );
     }
 
     /**
@@ -84,7 +87,13 @@ public class BaseClass {
     public char[] initializeDigits()
     {
        char[] returnArray = new char[ maxDigits ];
-       return digitArray;
+       int currentChar = 0;
+
+       for( currentChar = 0; currentChar < maxDigits; currentChar++ )
+       {
+           returnArray[ currentChar ] = '0';
+       }
+       return returnArray;
     }
 
     /**
@@ -130,16 +139,16 @@ public class BaseClass {
     private int convertStringToInt( String stringToConvert )
     {
         int currentDigit = 0;
-        char currentChar = stringToConvert.charAt( currentDigit );
+        char currentChar;
         int total = 0;
         int intAtPlace = 0;
         int stringLength = stringToConvert.length();
 
         for( currentDigit = 0; currentDigit < stringLength; currentDigit++ )
         {
+          currentChar = stringToConvert.charAt( currentDigit );
           intAtPlace = intToPow( 10, ( stringLength - 1 - currentDigit ) ) ;
           total += ( intAtPlace * digitToInt( currentChar ) ) ;
-          currentChar = stringToConvert.charAt( currentDigit );
         }
 
         return total;
@@ -151,9 +160,9 @@ public class BaseClass {
      * @param decValue
      * @return Char array containing the converted value
      */
-    public char[] decToBase( String decValue )
+    private char[] decToBase( String decValue )
     {
-        char[] returnArray = new char[ maxDigits ];
+        char[] returnArray = initializeDigits();
         int currentDigit = 0;
         int decValueToConvert = convertStringToInt( decValue );
         int digitCounter = 0;
@@ -167,7 +176,7 @@ public class BaseClass {
         {
             if( decValueToConvert == 0) // we don't want to divide by zero
             {
-                numDigits = currentDigit;
+                numDigits = digitCounter;
                 return returnArray;
             }
 
@@ -186,6 +195,76 @@ public class BaseClass {
 
         numDigits = currentDigit;
         return returnArray;
+    }
+
+    /**
+     * Reverses array of char type
+     * @param array The array that is going to be reversed
+     * @return A new array with the elements reversed
+     */
+    private char[] reverseCharArray(  char[] array )
+    {
+        int index = 0;
+        char[] returnArray = initializeDigits();
+        for( index = 0; index < numDigits; index++ )
+        {
+           returnArray[ maxDigits - 1 - index ] = array[ index ]; // reverse the array
+        }
+
+        return returnArray;
+    }
+
+    /**
+     * Copies a character array
+     * @param array The array to be copied
+     * @return A new array, with the same elements as array
+     */
+    private char[] copyArray( char[] array )
+    {
+        char[] returnArray = initializeDigits();
+        int index = 0;
+        for( index = 0; index < array.length; index++ )
+        {
+            returnArray[ index ] = array[ index ];
+        }
+        return returnArray;
+    }
+
+    /**
+     * Turns a character array into a string, removes leading zeroes.
+     * @param arrayToConvert
+     * @return
+     */
+    private String charArrayToString(char[] arrayToConvert )
+    {
+       String convertedString = "";
+       int index = 0;
+       for( index = ( maxDigits - numDigits ); index < maxDigits; index++) // cut off leading zeroes
+       {
+          convertedString += arrayToConvert[ index ];
+       }
+
+       return convertedString;
+    }
+    /**
+     * Overrides toString method and provides output as both the base and
+     * a decimal value.
+     * <p>
+     * Note: Output must be in the form (base number) decimal number
+     * <p>
+     * Example "(4E56) 20054"
+     * @returns String result as specified
+     */
+    public String toString()
+    {
+      String returnString = "";
+      char[] digitArrayCopy = copyArray( digitArray );
+      char[] reversedArray = reverseCharArray( digitArrayCopy );
+      String digitArrayString = charArrayToString( reversedArray );
+      returnString = "(" + digitArrayString + ") " + 4;
+
+      return returnString;
+
     }
     /**
      * Implements the compareTo required of the Comparable class
