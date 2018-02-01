@@ -147,7 +147,7 @@ public class BaseClass {
         for( currentDigit = 0; currentDigit < stringLength; currentDigit++ )
         {
           currentChar = stringToConvert.charAt( currentDigit );
-          intAtPlace = intToPow( 10, ( stringLength - 1 - currentDigit ) ) ;
+          intAtPlace = intToPow( BASE_10, ( stringLength - 1 - currentDigit ) ) ;
           total += ( intAtPlace * digitToInt( currentChar ) ) ;
         }
 
