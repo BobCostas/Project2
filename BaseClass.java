@@ -1,6 +1,6 @@
 package p2_Package;
 
-public class BaseClass implements Comparable{
+public class BaseClass {
 
     /**
      * Default constructor for BaseClass
@@ -132,10 +132,14 @@ public class BaseClass implements Comparable{
         int currentDigit = 0;
         char currentChar = stringToConvert.charAt( currentDigit );
         int total = 0;
+        int intAtPlace = 0;
+        int stringLength = stringToConvert.length();
 
-        for( currentDigit = 0; currentChar < stringToConvert.length(); currentDigit++ )
+        for( currentDigit = 0; currentDigit < stringLength; currentDigit++ )
         {
-          total += digitToInt( currentChar );
+          intAtPlace = intToPow( 10, ( stringLength - 1 - currentDigit ) ) ;
+          total += ( intAtPlace * digitToInt( currentChar ) ) ;
+          currentChar = stringToConvert.charAt( currentDigit );
         }
 
         return total;
@@ -147,7 +151,7 @@ public class BaseClass implements Comparable{
      * @param decValue
      * @return Char array containing the converted value
      */
-    private char[] decToBase( String decValue )
+    public char[] decToBase( String decValue )
     {
         char[] returnArray = new char[ maxDigits ];
         int currentDigit = 0;
@@ -158,8 +162,6 @@ public class BaseClass implements Comparable{
         {
             return null;
         }
-
-
 
         for( digitCounter = 0; digitCounter < maxDigits; digitCounter++ )
         {
