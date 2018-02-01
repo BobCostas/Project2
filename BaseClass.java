@@ -121,15 +121,69 @@ public class BaseClass implements Comparable{
     {
         return ( int ) ( digit - '0');
     }
+
+    /**
+     * Converts a string of numbers and letters into its equivalent int.
+     * @param stringToConvert The string to be converted to an integer
+     * @return The Integer value of the string
+     */
+    private int convertStringToInt( String stringToConvert )
+    {
+        int currentDigit = 0;
+        char currentChar = stringToConvert.charAt( currentDigit );
+        int total = 0;
+
+        for( currentDigit = 0; currentChar < stringToConvert.length(); currentDigit++ )
+        {
+          total += digitToInt( currentChar );
+        }
+
+        return total;
+    }
+
     /**
      * Converts given positive decimal integer as string input to the
      * specified base as a character array within the object.
      * @param decValue
-     * @return
+     * @return Char array containing the converted value
      */
     private char[] decToBase( String decValue )
     {
         char[] returnArray = new char[ maxDigits ];
+        int currentDigit = 0;
+        int decValueToConvert = convertStringToInt( decValue );
+        int digitCounter = 0;
+
+        if( ( base < MIN_BASE_VALUE ) || ( base > MAX_BASE_VALUE ) )
+        {
+            return null;
+        }
+
+
+
+        for( digitCounter = 0; digitCounter < maxDigits; digitCounter++ )
+        {
+            if( decValueToConvert == 0) // we don't want to divide by zero
+            {
+                numDigits = currentDigit;
+                return returnArray;
+            }
+
+            currentDigit = decValueToConvert % base;
+            decValueToConvert /= base;
+
+            returnArray[ digitCounter ] = intToDigit( currentDigit );
+
+        }
+
+        if( decValueToConvert > 0 )
+        {
+            overFlow = true;
+            return null;
+        }
+
+        numDigits = currentDigit;
+        return returnArray;
     }
     /**
      * Implements the compareTo required of the Comparable class
@@ -137,8 +191,8 @@ public class BaseClass implements Comparable{
      * @return value specifying result: for this greater than value: +1, for equal: 0,
      *         for this less than value: -1
      */
-    public int compareTo( BaseClass value )
-    {
-
-    }
+//    public int compareTo( BaseClass value )
+//    {
+//
+//    }
 }
