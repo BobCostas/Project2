@@ -103,6 +103,35 @@ public class BaseClass implements Comparable{
     }
 
     /**
+     * Translates integer value to character
+     * @param intToConvert The int to be converted to character value
+     * @return The character value of the integer
+     */
+    private char intToDigit( int intToConvert )
+    {
+       return ( char ) ( intToConvert + '0' );
+    }
+
+    /**
+     * Translates character digit to integer value
+      * @param digit The digit to be converted
+     * @return An integer of the character value
+     */
+    private int digitToInt( char digit )
+    {
+        return ( int ) ( digit - '0');
+    }
+    /**
+     * Converts given positive decimal integer as string input to the
+     * specified base as a character array within the object.
+     * @param decValue
+     * @return
+     */
+    private char[] decToBase( String decValue )
+    {
+        char[] returnArray = new char[ maxDigits ];
+    }
+    /**
      * Implements the compareTo required of the Comparable class
      * @param value BaseClass data to be compared with this
      * @return value specifying result: for this greater than value: +1, for equal: 0,
