@@ -2,7 +2,7 @@ package p2_Package;
 
 import java.util.Arrays;
 
-public class BaseClass {
+public class BaseClass implements Comparable<BaseClass> {
 
     /**
      * Default constructor for BaseClass
@@ -324,8 +324,17 @@ public class BaseClass {
      * @return value specifying result: for this greater than value: +1, for equal: 0,
      *         for this less than value: -1
      */
-//    public int compareTo( BaseClass value )
-//    {
-//
-//    }
+    public int compareTo( BaseClass value )
+    {
+        if( value.getValueAsDecimal() > getValueAsDecimal() )
+        {
+            return -1;
+        }
+        else if( value.getValueAsDecimal() < getValueAsDecimal() )
+        {
+            return 1;
+        }
+        
+        return 0;
+    }
 }
