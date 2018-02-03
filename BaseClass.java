@@ -33,10 +33,7 @@ public class BaseClass implements Comparable<BaseClass> {
       numDigits = baseClassToCopy.numDigits;
       digitArray = initializeDigits();
 
-      for( currentChar = 0; currentChar < numDigits; currentChar++ ) // copy other's array
-      {
-         digitArray[ currentChar ] = digitArray[ currentChar ];
-      }
+      digitArray = copyArray( baseClassToCopy.digitArray );
     }
 
     /**
@@ -334,7 +331,7 @@ public class BaseClass implements Comparable<BaseClass> {
         {
             return 1;
         }
-        
+
         return 0;
     }
 }
