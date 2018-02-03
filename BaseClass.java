@@ -129,6 +129,14 @@ public class BaseClass implements Comparable<BaseClass> {
     }
 
     /**
+     * Checks to see if the number stored in this object is zero
+     * @return True if the number is equal to zero
+     */
+    public boolean isZero()
+    {
+        return ( digitArray[0] == 0 && numDigits <= 1 );
+    }
+    /**
      * Converts a string of numbers and letters into its equivalent int.
      * @param stringToConvert The string to be converted to an integer
      * @return The Integer value of the string
