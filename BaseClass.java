@@ -198,6 +198,24 @@ public class BaseClass {
     }
 
     /**
+     * Converts number in base to decimal number.
+     * @return A decimal number as specified.
+     */
+    private int baseToDec( char[] baseNumToConvert )
+    {
+       int convertedDecNumber = 0;
+       int currentDigit = 0;
+       int currentInt = 0;
+
+       for( currentDigit = 0; currentDigit < numDigits; currentDigit++ )
+       {
+           currentInt = digitToInt( baseNumToConvert[ currentDigit ]); // convert the char to an int
+           convertedDecNumber += currentInt * intToPow( base, currentDigit );
+       }
+       return convertedDecNumber;
+    }
+
+    /**
      * Reverses array of char type
      * @param array The array that is going to be reversed
      * @return A new array with the elements reversed
@@ -260,11 +278,45 @@ public class BaseClass {
       String returnString = "";
       char[] digitArrayCopy = copyArray( digitArray );
       char[] reversedArray = reverseCharArray( digitArrayCopy );
+
       String digitArrayString = charArrayToString( reversedArray );
-      returnString = "(" + digitArrayString + ") " + 4;
+      returnString = "(" + digitArrayString + ") " + baseToDec( digitArrayCopy );
 
       return returnString;
 
+    }
+
+    /**
+     * Access decimal value directly
+     *
+     * <p>
+     *     Note: If value is overflowed, returns 0
+     * @return Integer value in decimal form
+     */
+    public int getValueAsDecimal()
+    {
+        if( overFlow )
+        {
+            return 0;
+        }
+
+        return baseToDec( digitArray );
+    }
+
+    /**
+     * Accesses the value directly
+     * <p>
+     *     Exception: If the value is overflowed, returns dummy string
+     * @return String value in base form
+     */
+    public String getValueAsBase()
+    {
+        String dummyString = "The value has been overflowed.";
+        if( overFlow )
+        {
+            return dummyString;
+        }
+        return Arrays.toString(digitArray);
     }
     /**
      * Implements the compareTo required of the Comparable class
