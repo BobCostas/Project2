@@ -1,11 +1,15 @@
 package p2_Package;
 
-import java.util.Arrays;
 
 public class BaseClassTest {
     public static void main(String[] args)
     {
-        BaseClass baseClass = new BaseClass( 2, 10, "100");
-        System.out.println(Arrays.toString(baseClass.decToBase("100")));
+        BaseClass baseClass = new BaseClass( 6, 10, "100");
+        BaseClass baseClass2 = new BaseClass( baseClass );
+        System.out.println(baseClass.toString());
+        System.out.println(baseClass.getValueAsDecimal());
+        System.out.println(baseClass.getValueAsBase());
+        System.out.println(baseClass2.getValueAsDecimal());
+        System.out.println(baseClass2.getValueAsBase());
     }
 }
