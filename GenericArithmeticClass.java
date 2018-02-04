@@ -45,6 +45,7 @@ public class GenericArithmeticClass <GenericData> {
     public GenericArithmeticClass ( int capacity )
     {
        arrayCapacity = capacity;
+       localArray = ( GenericData[] ) new Object[ arrayCapacity ];
     }
 
     /**
