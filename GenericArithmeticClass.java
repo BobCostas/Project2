@@ -46,6 +46,7 @@ public class GenericArithmeticClass <GenericData> {
     {
        arrayCapacity = capacity;
     }
+
     /**
      * Holds the capacity of the array
      */
@@ -60,4 +61,22 @@ public class GenericArithmeticClass <GenericData> {
      * Holds local array of generic items
      */
     private GenericData[] localArray;
+
+    /**
+     * Sets element into array at index.
+     * @param index location in array to place data
+     * @param newValue Value to be appended to array
+     * @return Boolean success if element set at index, false if index outside boundaries
+     */
+    public boolean setValueAt( int index, GenericData newValue )
+    {
+       if( index > arrayCapacity )
+       {
+           return false;
+       }
+
+       localArray[ index ] = newValue;
+
+       return true;
+    }
 }
