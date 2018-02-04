@@ -121,4 +121,29 @@ public class GenericArithmeticClass <GenericData> {
 
         return true;
     }
+
+    /**
+     * Description: Gets current capacity of array
+     * <p> Note: capacity of array indicates number of values the array can hold
+     * @return Capacity of array
+     */
+    public int getCurrentCappacity()
+    {
+       return arrayCapacity;
+    }
+
+    /**
+     * Swaps one element in the local array at a given index with another element
+     * in the array at the other given element
+     * @param firstIndex Index of one of two elements to be swapped
+     * @param secondIndex Index of second of two elements to be swapped
+     */
+    private void swapElements( int firstIndex, int secondIndex )
+    {
+       GenericData tempElement = localArray[ secondIndex ];
+
+       localArray[ secondIndex ] = localArray[ firstIndex ];
+       localArray[ firstIndex ] = tempElement;
+
+    }
 }
