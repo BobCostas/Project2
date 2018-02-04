@@ -147,4 +147,35 @@ public class GenericArithmeticClass <GenericData> {
        localArray[ firstIndex ] = tempElement;
 
     }
+
+    /**
+     * Description: Sorts elements using the bubble sort algorithm
+     * <p> Note: The data is sorted using the compareTo method of the
+     * given data set; the compareTo method decides the key and the
+     * order resulting.
+     * @param size indicates how many items to sort; method will sort all
+     *             items between and including index 0 and index size -1
+     */
+    public void runBubbleSort( int size )
+    {
+       int completedPasses = 0;
+       int currentObject = 0;
+
+       Comparable  firstObject;
+       Comparable secondObject;
+
+       for( completedPasses = 0; completedPasses < size - 1; completedPasses++)
+       {
+           for( currentObject = 0; currentObject < size - 1; currentObject++ )
+           {
+               firstObject = (Comparable) localArray[ currentObject ];
+               secondObject = (Comparable) localArray[ currentObject + 1 ];
+
+               if( firstObject.compareTo( secondObject ) == 1 )
+               {
+                 swapElements( currentObject, currentObject + 1);
+               }
+           }
+       }
+    }
 }
