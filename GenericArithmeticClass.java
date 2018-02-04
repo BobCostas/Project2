@@ -95,4 +95,30 @@ public class GenericArithmeticClass <GenericData> {
        return localArray[ index ];
 
     }
+
+    /**
+     * Description: Resets array capacity, and current array capacity value.
+     * <p> Exception: Method will not resize capacity below current capacity,
+     * returns false if this attempted, true otherwise
+     * @param newCapacity
+     * @return
+     */
+    public boolean resize( int newCapacity )
+    {
+        GenericData[] newLocalArray = ( GenericData[] ) new Object[ newCapacity ];
+        int currentElement = 0;
+
+        if( newCapacity < arrayCapacity )
+        {
+            return false;
+        }
+        for( currentElement = 0; currentElement < arrayCapacity; currentElement++ )
+        {
+            newLocalArray[ currentElement ] = localArray[ currentElement ];
+        }
+
+        arrayCapacity = newCapacity; // reset size of array
+
+        return true;
+    }
 }
