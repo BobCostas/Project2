@@ -115,7 +115,11 @@ public class BaseClass implements Comparable<BaseClass> {
      */
     private char intToDigit( int intToConvert )
     {
-       return ( char ) ( intToConvert + '0' );
+        if( 0 <= intToConvert && intToConvert <= 9)
+        {
+            return ( char ) ( intToConvert + '0');
+        }
+        return ( char ) ( intToConvert - 10 + 'A' );
     }
 
     /**
@@ -125,7 +129,11 @@ public class BaseClass implements Comparable<BaseClass> {
      */
     private int digitToInt( char digit )
     {
-        return ( int ) ( digit - '0');
+        if( '0' <= digit && digit <= '9' )
+        {
+            return ( int ) ( digit - '0');
+        }
+        return ( int ) ( 10 + digit - 'A' );
     }
 
     /**
