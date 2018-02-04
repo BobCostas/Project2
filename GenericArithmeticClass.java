@@ -79,4 +79,20 @@ public class GenericArithmeticClass <GenericData> {
 
        return true;
     }
+
+    /**
+     * Acquires data at specified element
+     * @param index index of element to be returned
+     * @return GenericData item retrieved from array; null if index outside boundaries
+     */
+    public GenericData getValueAt( int index )
+    {
+       if( index > arrayCapacity )
+       {
+           return null;
+       }
+
+       return localArray[ index ];
+
+    }
 }
