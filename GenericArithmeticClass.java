@@ -9,19 +9,43 @@ package p2_Package;
  * <p>
  *  Note: Maintains a capacity value for maximum number of items that can be stored.
  *
- * @param <T>
+ * @param <GenericData> The data type used in the class
  */
-public class GenericArithmeticClass <T> {
+public class GenericArithmeticClass <GenericData> {
 
     /**
      * Default constructor, initializes array to default capacity.
      */
     public GenericArithmeticClass ()
     {
-        localArray = (T[]) new Object[ DEFAULT_CAPACITY ];
+        localArray = ( GenericData[] ) new Object[ DEFAULT_CAPACITY ];
         arrayCapacity = DEFAULT_CAPACITY;
     }
 
+    /**
+     * Copy constructor, intitializes array to capacity of copied array, then copies the
+     * elements up to the given capacity.
+     * @param copied The GenericArithmeticClass object to be copied
+     */
+    public GenericArithmeticClass( GenericArithmeticClass<GenericData> copied )
+    {
+       arrayCapacity = copied.arrayCapacity;
+       int currentData = 0;
+
+       for( currentData = 0; currentData < copied.arrayCapacity; currentData++ )
+       {
+           localArray[ currentData ] = copied.localArray[ currentData ];
+       }
+    }
+
+    /**
+     * Initializing constructor, initializes array to specified capacity.
+     * @param capacity Integer maximum capacity specification for the array
+     */
+    public GenericArithmeticClass ( int capacity )
+    {
+       arrayCapacity = capacity;
+    }
     /**
      * Holds the capacity of the array
      */
@@ -35,5 +59,5 @@ public class GenericArithmeticClass <T> {
     /**
      * Holds local array of generic items
      */
-    private T[] localArray;
+    private GenericData[] localArray;
 }
