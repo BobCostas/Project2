@@ -178,4 +178,39 @@ public class GenericArithmeticClass <GenericData> {
            }
        }
     }
+
+    /**
+     * Description: Sorts elements using the selection sort algorithm.
+     * <p>
+     * Note: The data is sorted using the compareTo method of the
+     * given data set; the compareTo method decides the key and the
+     * order resulting.
+     * @param size indicates how many items to sort; method will sort all
+     *             items between and including index 0 and index size -1
+     */
+    public void runSelectionSort( int size )
+    {
+
+        int completedPasses = 0;
+        int currentObject = 0;
+        int smallestObjectIndex = 0;
+        Comparable smallestObject;
+        Comparable currentItem;
+
+        for( completedPasses = 0; completedPasses < size - 1; completedPasses++ )
+        {
+           smallestObjectIndex = completedPasses;
+           smallestObject = ( Comparable ) localArray[ completedPasses ];
+           for( currentObject = completedPasses + 1; currentObject < size; currentObject++ )
+           {
+               currentItem = ( Comparable ) localArray[ currentObject ];
+               if( currentItem.compareTo( smallestObject ) == -1 )
+               {
+                  smallestObject = currentItem;
+                  smallestObjectIndex = currentObject;
+               }
+           }
+           swapElements( smallestObjectIndex , completedPasses );
+        }
+    }
 }
