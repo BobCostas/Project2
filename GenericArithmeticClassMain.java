@@ -52,9 +52,9 @@ public class GenericArithmeticClassMain
         for( index = 0; index < arrayCapacity; index++ )
         {
             tempBC = ac.getValueAt( index );
-            System.out.println( "Value: " + tempBC );
+//            System.out.println( "Value: " + tempBC );
         }
-        ac.runBubbleSort( ac.getCurrentCappacity() );
+        ac.runSelectionSort( ac.getCurrentCappacity() );
         for(int i = 0; i < ac.getCurrentCappacity(); i++) {
             System.out.println(ac.getValueAt(i).toString());
         }
