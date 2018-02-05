@@ -204,13 +204,47 @@ public class GenericArithmeticClass <GenericData> {
            for( currentObject = completedPasses + 1; currentObject < size; currentObject++ )
            {
                currentItem = ( Comparable ) localArray[ currentObject ];
-               if( currentItem.compareTo( smallestObject ) == -1 )
+               if(currentItem.compareTo( smallestObject ) == -1 )
                {
                   smallestObject = currentItem;
                   smallestObjectIndex = currentObject;
                }
            }
+
            swapElements( smallestObjectIndex , completedPasses );
+
+        }
+    }
+
+    /**
+     * Description: Sorts elements using the insertion sort algorithm.
+     * <p> Note: The data is sorted using the compareTo method of the
+     *     given data set; the compareTo method decides the key and the
+     *     order resulting.
+     ** @param size indicates how many items to sort; method will sort all
+     *             items between and including index 0 and index size -1
+     */
+    public void runInsertionSort( int size )
+    {
+        int i = 0;
+        int j = 0;
+        Comparable key;
+        Comparable movingObject = (Comparable ) localArray[ j ];
+
+        for( i = 1; i < size; i++ )
+        {
+           key = ( Comparable ) localArray[ i ];
+           j = i - 1;
+           movingObject = ( Comparable ) localArray[ j ];
+
+           while( j >= 0 && (
+                    movingObject.compareTo( key ) == 1 ) )  // movingobject >= tempobject
+           {
+               localArray[ j + 1 ] = localArray[ j ];
+               movingObject = ( Comparable )  localArray[ j ];
+               j--;
+           }
+           localArray[ j + 1 ] = ( GenericData ) key;
         }
     }
 }
