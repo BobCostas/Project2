@@ -6,7 +6,7 @@ public class BaseClassTest {
     {
         BaseClass baseClass = new BaseClass( 16, 16, "17532");
         BaseClass baseClass2 = new BaseClass(16, 16, "45810");
-        System.out.println(baseClass.subtractRegisters(baseClass, baseClass2));
+//        System.out.println(baseClass.compareRegisters( baseClass2 ));
 
     }
 }
