@@ -334,11 +334,10 @@ public class BaseClass implements Comparable<BaseClass> {
 
     /**
      * Compares two registers to determine the max.
-     * @param firstDigit The digit we are comparing against.
-     * @param secondDigit The digit we are comparing firstDigit to.
+     * @param secondDigit The digit we are comparing this to.
      * @return true if firstDigit > secondDigit, false otherwise
      */
-    public boolean compareRegisters( BaseClass firstDigit, BaseClass secondDigit )
+    private boolean compareRegisters( BaseClass secondDigit )
     {
             BaseClass thisCopy = new BaseClass( this );
             BaseClass valueCopy = new BaseClass( secondDigit );
@@ -378,7 +377,7 @@ public class BaseClass implements Comparable<BaseClass> {
      */
     public int compareTo( BaseClass value )
     {
-        if( compareRegisters(this, value)  )
+        if( compareRegisters( value )  )
         {
             return 1;
         }
