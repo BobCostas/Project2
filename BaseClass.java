@@ -331,6 +331,45 @@ public class BaseClass implements Comparable<BaseClass> {
         }
         return Arrays.toString(digitArray);
     }
+
+    /**
+     * Compares two registers to determine the max.
+     * @param firstDigit The digit we are comparing against.
+     * @param secondDigit The digit we are comparing firstDigit to.
+     * @return true if firstDigit > secondDigit, false otherwise
+     */
+    public boolean compareRegisters( BaseClass firstDigit, BaseClass secondDigit )
+    {
+            BaseClass thisCopy = new BaseClass( this );
+            BaseClass valueCopy = new BaseClass( secondDigit );
+
+            int currentDigit = numDigits - 1;
+            int thisCopyInt = digitToInt( thisCopy.digitArray[ currentDigit ] );
+            int valueCopyInt = digitToInt( valueCopy.digitArray[ currentDigit ] ) ;
+
+            if( thisCopy.numDigits > valueCopy.numDigits )
+            {
+                return true;
+            }
+            else if( thisCopy.numDigits < valueCopy.numDigits )
+            {
+                return false;
+            }
+
+            while( thisCopyInt <= valueCopyInt )
+            {
+                thisCopyInt = digitToInt( thisCopy.digitArray[ currentDigit ] );
+                valueCopyInt = digitToInt( valueCopy.digitArray[ currentDigit ] ) ;
+
+                if( ( currentDigit == 0 ) || ( valueCopyInt > thisCopyInt ) )
+                {
+                    return false;
+                }
+                currentDigit--;
+            }
+
+    return true;
+    }
     /**
      * Implements the compareTo required of the Comparable class
      * @param value BaseClass data to be compared with this
@@ -339,15 +378,10 @@ public class BaseClass implements Comparable<BaseClass> {
      */
     public int compareTo( BaseClass value )
     {
-        if( value.getValueAsDecimal() > getValueAsDecimal() )
-        {
-            return -1;
-        }
-        else if( value.getValueAsDecimal() < getValueAsDecimal() )
+        if( compareRegisters(this, value)  )
         {
             return 1;
         }
-
-        return 0;
+        return -1;
     }
 }
