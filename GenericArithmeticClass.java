@@ -232,25 +232,6 @@ public class GenericArithmeticClass <GenericData> {
 	@SuppressWarnings( "unchecked" )
     public void runInsertionSort( int size )
     {
-        int i = 0;
-        int j = 0;
-        Comparable key;
-        Comparable movingObject = (Comparable ) localArray[ j ];
 
-        for( i = 1; i < size; i++ )
-        {
-           key = ( Comparable ) localArray[ i ];
-           j = i - 1;
-           movingObject = ( Comparable<GenericData> ) localArray[ j ];
-
-           while( j >= 0 && (
-                    movingObject.compareTo( key ) == 1 ) )  // movingobject >= tempobject
-           {
-               localArray[ j + 1 ] = localArray[ j ];
-               movingObject = ( Comparable )  localArray[ j ];
-               j--;
-           }
-           localArray[ j + 1 ] = ( GenericData ) key;
-        }
     }
 }
