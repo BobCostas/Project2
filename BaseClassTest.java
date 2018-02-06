@@ -4,12 +4,9 @@ package p2_Package;
 public class BaseClassTest {
     public static void main(String[] args)
     {
-        BaseClass baseClass = new BaseClass( 6, 10, "100");
-        BaseClass baseClass2 = new BaseClass( baseClass );
-        System.out.println(baseClass.toString());
-        System.out.println(baseClass.getValueAsDecimal());
-        System.out.println(baseClass.getValueAsBase());
-        System.out.println(baseClass2.getValueAsDecimal());
-        System.out.println(baseClass2.getValueAsBase());
+        BaseClass baseClass = new BaseClass( 16, 16, "17532");
+        BaseClass baseClass2 = new BaseClass(16, 16, "45810");
+        System.out.println(baseClass.subtractRegisters(baseClass, baseClass2));
+
     }
 }
