@@ -16,6 +16,7 @@ public class GenericArithmeticClass <GenericData> {
     /**
      * Default constructor, initializes array to default capacity.
      */
+	@SuppressWarnings( "unchecked" )
     public GenericArithmeticClass ()
     {
         localArray = ( GenericData[] ) new Object[ DEFAULT_CAPACITY ];
@@ -42,6 +43,7 @@ public class GenericArithmeticClass <GenericData> {
      * Initializing constructor, initializes array to specified capacity.
      * @param capacity Integer maximum capacity specification for the array
      */
+	@SuppressWarnings( "unchecked" )
     public GenericArithmeticClass ( int capacity )
     {
        arrayCapacity = capacity;
@@ -104,6 +106,7 @@ public class GenericArithmeticClass <GenericData> {
      * @param newCapacity
      * @return
      */
+	@SuppressWarnings( "unchecked" )
     public boolean resize( int newCapacity )
     {
         GenericData[] newLocalArray = ( GenericData[] ) new Object[ newCapacity ];
@@ -156,13 +159,14 @@ public class GenericArithmeticClass <GenericData> {
      * @param size indicates how many items to sort; method will sort all
      *             items between and including index 0 and index size -1
      */
+    @SuppressWarnings("unchecked")
     public void runBubbleSort( int size )
     {
        int completedPasses = 0;
        int currentObject = 0;
 
        Comparable  firstObject;
-       Comparable secondObject;
+       Comparable  secondObject;
 
        for( completedPasses = 0; completedPasses < size - 1; completedPasses++)
        {
@@ -188,6 +192,7 @@ public class GenericArithmeticClass <GenericData> {
      * @param size indicates how many items to sort; method will sort all
      *             items between and including index 0 and index size -1
      */
+	@SuppressWarnings( "unchecked" )
     public void runSelectionSort( int size )
     {
 
@@ -224,6 +229,7 @@ public class GenericArithmeticClass <GenericData> {
      ** @param size indicates how many items to sort; method will sort all
      *             items between and including index 0 and index size -1
      */
+	@SuppressWarnings( "unchecked" )
     public void runInsertionSort( int size )
     {
         int i = 0;
@@ -235,7 +241,7 @@ public class GenericArithmeticClass <GenericData> {
         {
            key = ( Comparable ) localArray[ i ];
            j = i - 1;
-           movingObject = ( Comparable ) localArray[ j ];
+           movingObject = ( Comparable<GenericData> ) localArray[ j ];
 
            while( j >= 0 && (
                     movingObject.compareTo( key ) == 1 ) )  // movingobject >= tempobject
