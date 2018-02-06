@@ -233,5 +233,24 @@ public class GenericArithmeticClass <GenericData> {
     public void runInsertionSort( int size )
     {
 
+        Comparable firstObject;
+        Comparable secondObject;
+
+        int outerLoopIndex = 0;
+        int innerLoopIndex = 0;
+
+        for( outerLoopIndex = 1; outerLoopIndex < size; outerLoopIndex++ )
+        {
+            innerLoopIndex = outerLoopIndex ;
+            firstObject = ( Comparable ) localArray[ innerLoopIndex ];
+            secondObject = ( Comparable ) localArray[ innerLoopIndex - 1 ];
+            while( innerLoopIndex > 0 && (
+                firstObject.compareTo( secondObject )  == -1
+                ))
+            {
+                swapElements( innerLoopIndex, innerLoopIndex - 1 );
+                innerLoopIndex--;
+            }
+        }
     }
 }
