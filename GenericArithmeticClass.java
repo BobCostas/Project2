@@ -235,22 +235,27 @@ public class GenericArithmeticClass <GenericData> {
 
         Comparable firstObject;
         Comparable secondObject;
+        Comparable value;
 
         int outerLoopIndex = 0;
         int innerLoopIndex = 0;
 
         for( outerLoopIndex = 1; outerLoopIndex < size; outerLoopIndex++ )
         {
+
+            value = ( Comparable ) localArray[ outerLoopIndex ];
             innerLoopIndex = outerLoopIndex ;
+
             firstObject = ( Comparable ) localArray[ innerLoopIndex ];
-            secondObject = ( Comparable ) localArray[ innerLoopIndex - 1 ];
             while( innerLoopIndex > 0 && (
-                firstObject.compareTo( secondObject )  == -1
+                firstObject.compareTo( localArray[ innerLoopIndex - 1 ] ) == - 1 // first object < second object
                 ))
             {
-                swapElements( innerLoopIndex, innerLoopIndex - 1 );
+
+                localArray[ innerLoopIndex ] = localArray[ innerLoopIndex - 1 ];
                 innerLoopIndex--;
             }
+            localArray[ innerLoopIndex ] = ( GenericData ) value;
         }
     }
 }
