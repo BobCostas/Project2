@@ -54,7 +54,7 @@ public class GenericArithmeticClassMain
             tempBC = ac.getValueAt( index );
 //            System.out.println( "Value: " + tempBC );
         }
-        ac.runSelectionSort( ac.getCurrentCappacity() );
+        ac.runInsertionSort( ac.getCurrentCappacity() );
         for(int i = 0; i < ac.getCurrentCappacity(); i++) {
             System.out.println(ac.getValueAt(i).toString());
         }
