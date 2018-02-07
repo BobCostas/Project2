@@ -103,8 +103,8 @@ public class GenericArithmeticClass <GenericData> {
      * Description: Resets array capacity, and current array capacity value.
      * <p> Exception: Method will not resize capacity below current capacity,
      * returns false if this attempted, true otherwise
-     * @param newCapacity
-     * @return
+     * @param newCapacity The new capacity to change array to.
+     * @return True if the resizing was successful, false otherwise
      */
 	@SuppressWarnings( "unchecked" )
     public boolean resize( int newCapacity )
@@ -234,7 +234,6 @@ public class GenericArithmeticClass <GenericData> {
     {
 
         Comparable firstObject;
-        Comparable secondObject;
         Comparable value;
 
         int outerLoopIndex = 0;

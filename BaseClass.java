@@ -25,7 +25,6 @@ public class BaseClass implements Comparable<BaseClass> {
      */
     public BaseClass( BaseClass baseClassToCopy )
     {
-      int currentChar = 0;
 
       base = baseClassToCopy.base;
       overFlow = baseClassToCopy.overFlow;
@@ -170,7 +169,7 @@ public class BaseClass implements Comparable<BaseClass> {
     /**
      * Converts given positive decimal integer as string input to the
      * specified base as a character array within the object.
-     * @param decValue
+     * @param decValue The decimal value to be converted to base
      * @return Char array containing the converted value
      */
     private char[] decToBase( String decValue )
@@ -263,8 +262,8 @@ public class BaseClass implements Comparable<BaseClass> {
 
     /**
      * Turns a character array into a string, removes leading zeroes.
-     * @param arrayToConvert
-     * @return
+     * @param arrayToConvert Array of characters to be converted into a string, as specified.
+     * @return A string, as specified
      */
     private String charArrayToString(char[] arrayToConvert )
     {
